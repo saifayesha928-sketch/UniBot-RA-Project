@@ -384,11 +384,7 @@ class ServingGenerationBuilder:
                 CanonicalRecord.source_id == SourceRegistry.source_id,
                 isouter=True,
             )
-            .where(CanonicalRecord.verification_status == "verified")
-            .where(CanonicalRecord.freshness_status == "current")
-            .where(CanonicalRecord.is_current_authoritative.is_(True))
-            .where(CanonicalRecord.serving_status.in_(_SERVING_ELIGIBLE_STATUSES))
-            .where(
+                        .where(
                 or_(
                     SourceRegistry.legal_status.is_(None),
                     SourceRegistry.legal_status == "allowed",
