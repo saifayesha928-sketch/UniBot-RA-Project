@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unibot"
+version = "0.1.0"
+description = "university current-only retrieval backend"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "alembic",
+    "beautifulsoup4",
+    "boto3",
+    "cachetools>=5.5",
+    "crawl4ai",
+    "fastembed>=0.7",
+    "landingai-ade",
+    "fastapi",
+    "httpx",
+    "lxml",
+    "orjson",
+    "psycopg[binary]",
+    "pydantic-settings",
+    "python-pptx>=1.0.2",
+    "qdrant-client",
+    "sqlalchemy",
+    "structlog",
+    "tenacity",
+    "uvicorn",
+    "instructor>=1.14.5",
+    "rich",
+    "InquirerPy",
+    "lettucedetect>=0.1.8",
+    "sentence-transformers>=3.0",
+    "pybreaker>=1.4.1",
+]
+
+[project.optional-dependencies]
+docling = ["docling"]
+
+[dependency-groups]
+dev = [
+    "freezegun",
+    "mypy",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "ruff",
+    "testcontainers",
+    "types-cachetools",
+]
+
+[project.scripts]
+unibot = "main:main"
+unibot-cli = "unibot.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "eval: marks evaluation/regression tests (run with '-m eval')",
+]
+
+[tool.mypy]
+exclude = ["^main\\.py$"]
+explicit_package_bases = true
+mypy_path = ["src"]
+warn_return_any = true
+warn_unused_configs = true
+disallow_incomplete_defs = true
+
+[[tool.mypy.overrides]]
+module = "lettucedetect.*"
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["F"]

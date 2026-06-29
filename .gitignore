@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+wheels/
+
+# Virtual environments
+.venv/
+venv/
+
+# Secrets. Never commit real credentials.
+.env
+.env.*
+!.env.example
+
+# Local runtime state / caches
+.unibot/
+cache/
+*.log
+
+# Local model weights (downloaded separately; see README)
+models/
+
+# OS / editor cruft
+.DS_Store
+.idea/
+.vscode/
+
+# Your collected data under data/ (records.jsonl, sources.json,
+# manifest.json, documents/) is intentionally NOT ignored. Commit it.
