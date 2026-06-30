@@ -37,7 +37,7 @@ from unibot.retrieval.reranker import RerankCandidate, Reranker, TokenOverlapRer
 logger = structlog.get_logger(__name__)
 
 DEFAULT_MAX_EVIDENCE_PER_SOURCE = 2
-DEFAULT_RESERVED_TYPE_SLOTS = 2
+DEFAULT_RESERVED_TYPE_SLOTS = 1
 
 
 @dataclass(frozen=True, slots=True)
@@ -162,7 +162,7 @@ class RetrievalService:
         source_class_hint: str | None = None,
         record_type_hint: str | None = None,
         hint_is_user_provided: bool = False,
-        limit: int = 5,
+        limit: int = 3,
         secondary_hints: tuple[tuple[str | None, str | None], ...] = (),
     ) -> tuple[RetrievedEvidence, ...]:
         source_class_hint = normalize_source_class_hint(source_class_hint)
