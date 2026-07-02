@@ -2,7 +2,7 @@ const askBtn = document.getElementById("askBtn");
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
 
-const API_URL = "http://127.0.0.1:8000/query";
+const API_URL = "https://unibot-ra-project-production-4823.up.railway.app/query";
 
 askBtn.addEventListener("click", askQuestion);
 
