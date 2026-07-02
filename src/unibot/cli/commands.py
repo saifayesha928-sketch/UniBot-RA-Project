@@ -95,7 +95,7 @@ def run_update_cycle(args: argparse.Namespace) -> int:
     with ExitStack() as stack:
         shared_http_clients = build_provider_http_clients(settings)
         stack.callback(shared_http_clients.close)
-        qdrant_client = QdrantClient(url=qdrant_url, api_key=settings.qdrant_api_key, timeout=120)
+        qdrant_client = QdrantClient(url=qdrant_url, api_key=settings.qdrant_api_key, timeout=120,)
         stack.callback(qdrant_client.close)
         with direct_session_scope() as session:
             registry_repo = SourceRegistryRepository(session)
@@ -262,7 +262,7 @@ def run_build_generation(args: argparse.Namespace) -> int:
 
     settings = get_settings()
     qdrant_client = QdrantClient(
-        url=str(settings.qdrant_url), api_key=settings.qdrant_api_key, timeout=120
+        url=str(settings.qdrant_url), api_key=settings.qdrant_api_key, timeout=6000,
     )
 
     try:

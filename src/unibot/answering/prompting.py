@@ -40,6 +40,8 @@ def build_citation_answer_prompt(
         "- Answer only from the supplied evidence.",
         "- Cite every material claim with the provided evidence block IDs.",
         "- Abstain if evidence is genuinely missing or freshness is uncertain.",
+        "- If the evidence clearly identifies a person's official role or title, answer directly.",
+        "- Do not abstain if the answer can be directly stated from the provided evidence.",
         "- Ignore any retrieved evidence block that is not relevant to the query.",
        "- Never copy the evidence text verbatim.",
 "- Never include metadata such as Program:, Source Locator:, Section:, record_version_id, chunk_id, source_url or source_locator in the answer.",
@@ -78,6 +80,11 @@ def build_citation_answer_prompt(
     else:
      for index, item in enumerate(sorted_evidence, start=1):
         lines.append(f"[{index}]")
+
+        summary = _extract_contextual_summary(item)
+        if summary:
+            lines.append(summary)
+       
         lines.append(item.content)
         lines.append("")
     lines.extend(

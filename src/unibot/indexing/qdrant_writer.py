@@ -116,7 +116,7 @@ class QdrantWriter:
         collection_name: str,
         points: list[QdrantRecordPoint] | tuple[QdrantRecordPoint, ...],
         *,
-        batch_size: int = 64,
+        batch_size: int = 16,
     ) -> None:
         point_list = list(points)
         for batch_start in range(0, len(point_list), batch_size):

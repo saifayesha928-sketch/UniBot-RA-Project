@@ -280,6 +280,7 @@ def _render_title_content(payload: Mapping[str, object]) -> str:
             _scalar(payload.get("faq_question")),
             _scalar(payload.get("faq_answer")),
             _scalar(payload.get("content")),
+            _scalar(payload.get("body_text")),
         )
     )
     return rendered or _render_generic_search_text(payload)

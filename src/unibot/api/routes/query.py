@@ -399,7 +399,7 @@ async def query_records(payload: QueryRequest, request: Request) -> dict[str, An
                     secondary_hints=ctx.secondary_hints,
                 )
             else:
-                answer_result = await asyncio.to_thread(
+                               answer_result = await asyncio.to_thread(
                     query_service.answer_query,
                     payload.query_text,
                     retrieval_query=retrieval_query,
@@ -410,26 +410,12 @@ async def query_records(payload: QueryRequest, request: Request) -> dict[str, An
                     limit=payload.limit,
                     secondary_hints=ctx.secondary_hints,
                 )
-        except httpx.HTTPStatusError as exc:
-           print("=" * 60)
-           print("STATUS CODE:", exc.response.status_code)
-           print("RESPONSE:")
-           print(exc.response.text)
-           print("=" * 60)
-           raise
-        except (httpx.HTTPError, RuntimeError) as exc:
-            logger.error(
-                "query.provider_failure",
-                generation_id=generation.generation_id,
-                query_class=str(classification.query_class),
-                effective_source_class_hint=ctx.effective_source_class_hint,
-                record_type_hint=classification.record_type_hint,
-                exc_type=type(exc).__name__,
-            )
+        except (httpx.HTTPError, RuntimeError):
             raise HTTPException(
                 status_code=503,
                 detail="A provider dependency is temporarily unavailable. Please try again later.",
             )
+    
         t_post_answer = time.monotonic()
         logger.info(
             "query.latency_ms",

@@ -109,9 +109,9 @@ class ServingGenerationBuilder:
             self._progress.on_phase_start("build")
             self._progress.on_generation_step("chunking", f"Building chunks from {len(dedupe_result.primary_records)} records")
         chunks = build_chunks(
-            list(dedupe_result.primary_records),
-            serving_generation_id=generation.generation_id,
-        )
+            list(decisions),
+    serving_generation_id=generation.generation_id,
+)
         if self._progress:
             self._progress.on_phase_done("build")
 
@@ -121,7 +121,7 @@ class ServingGenerationBuilder:
             self._progress.on_generation_step("contextualizing", f"Contextualizing {len(chunks)} chunks")
         chunks = self._contextualize_chunks(
             chunks,
-            decisions=tuple(dedupe_result.primary_records),
+             decisions=tuple(decisions),
         )
         if self._progress:
             self._progress.on_phase_done("contextualize")

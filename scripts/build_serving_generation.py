@@ -35,7 +35,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     builder = ServingGenerationBuilder(
         session_factory=session_factory,
         generation_repository=ServingGenerationRepository(session_factory=session_factory),
-        qdrant_writer=QdrantWriter(QdrantClient(url=str(settings.qdrant_url), api_key=settings.qdrant_api_key, timeout=120)),
+        qdrant_writer=QdrantWriter(QdrantClient(url=str(settings.qdrant_url), api_key=settings.qdrant_api_key, timeout=6000)),
         embedding_provider=create_embedding_provider(settings=settings),
         alias_name=args.alias_name,
         collection_prefix=args.collection_prefix,

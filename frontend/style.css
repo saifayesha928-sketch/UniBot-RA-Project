@@ -1,0 +1,206 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#eef3f8;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+
+    width:900px;
+    height:720px;
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+
+}
+
+header{
+
+    height:95px;
+
+    background:linear-gradient(90deg,#004a99,#0e9f6e);
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:25px;
+
+}
+
+.logo{
+
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#0e9f6e;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:34px;
+
+}
+
+header h1{
+
+    font-size:30px;
+
+}
+
+header p{
+
+    opacity:.9;
+
+}
+
+main{
+
+    padding:40px;
+
+    text-align:center;
+
+}
+
+main h2{
+
+    color:#004a99;
+
+    font-size:40px;
+
+}
+
+.subtitle{
+
+    margin-top:15px;
+
+    color:#666;
+
+    font-size:18px;
+
+}
+
+.chips{
+
+    margin-top:30px;
+
+}
+
+.chip{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:40px;
+
+    margin:6px;
+
+    background:#edf3fb;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+.chip:hover{
+
+    background:#0e9f6e;
+
+    color:white;
+
+}
+
+#chatBox{
+
+    margin-top:35px;
+
+    height:250px;
+
+    border:1px solid #ddd;
+
+    border-radius:15px;
+
+    overflow:auto;
+
+    padding:20px;
+
+    text-align:left;
+
+    background:#fafafa;
+
+}
+
+.input-area{
+
+    display:flex;
+
+    margin-top:20px;
+
+}
+
+input{
+
+    flex:1;
+
+    height:58px;
+
+    border-radius:35px;
+
+    border:1px solid #ddd;
+
+    padding:0 25px;
+
+    font-size:17px;
+
+}
+
+button#askBtn{
+
+    width:150px;
+
+    margin-left:15px;
+
+    border:none;
+
+    border-radius:35px;
+
+    background:#17a34a;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+button#askBtn:hover{
+
+    background:#0d8a3a;
+
+}

@@ -36,8 +36,8 @@ from unibot.retrieval.reranker import RerankCandidate, Reranker, TokenOverlapRer
 
 logger = structlog.get_logger(__name__)
 
-DEFAULT_MAX_EVIDENCE_PER_SOURCE = 2
-DEFAULT_RESERVED_TYPE_SLOTS = 1
+DEFAULT_MAX_EVIDENCE_PER_SOURCE = 1
+DEFAULT_RESERVED_TYPE_SLOTS = 3
 
 
 @dataclass(frozen=True, slots=True)

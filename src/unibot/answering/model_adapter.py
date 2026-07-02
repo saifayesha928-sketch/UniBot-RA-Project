@@ -194,11 +194,16 @@ class CohereCitationAnswerModel:
             response = await self._async_client.post(
                 self._base_url, **self._build_request_kwargs(request)
             )
+            
         else:
             async with httpx.AsyncClient() as client:
                 response = await client.post(
                     self._base_url, **self._build_request_kwargs(request)
                 )
+                print("=" * 80)
+            print("COHERE STATUS:", response.status_code)
+            print(response.text)
+            print("=" * 80)
         response.raise_for_status()
         return self._parse_response(response.json())
 

@@ -37,7 +37,7 @@ class OpenRouterCitationAnswerModel:
     def __init__(
         self, *,
         api_key:str,
-        model: str = "google/gemma-3-27b-it:free",
+        model: str = "anthropic/claude-sonnet-4",
         base_url:str="https://openrouter.ai/api/v1/chat/completions",
         timeout:float=30.0,
         app_name:str="UniBot",

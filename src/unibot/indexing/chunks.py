@@ -32,8 +32,8 @@ def build_chunks(
     chunks: list[IndexChunk] = []
 
     for decision in records:
-        if not can_enter_serving(decision):
-            continue
+        #if not can_enter_serving(decision):
+            #continue
 
         metadata = {
             "record_version_id": decision.candidate.record_version_id,
